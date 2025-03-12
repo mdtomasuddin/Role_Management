@@ -47,4 +47,8 @@ class RoleController extends Controller
         // }
         return response('this is a secret message');
     }
+
+    public function BlogDeshboard(){
+        return view('fronted.blog-deshboard');
+    }
 }

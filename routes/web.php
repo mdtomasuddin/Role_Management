@@ -16,5 +16,7 @@ require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';
 
 
-// Route::get('/roles',[RoleController::class,'index'])->middleware('auth');
+
 Route::get('role',[RoleController::class,'index'])->middleware('auth');
+Route::get('admin-only',[RoleController::class,'OnlyForAdmin'])->middleware(['auth','can:admin']);
+Route::get('editor-only',[RoleController::class,'OnlyForEditor'])->middleware(['auth','can:editor']);

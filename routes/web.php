@@ -20,3 +20,4 @@ require __DIR__.'/auth.php';
 Route::get('role',[RoleController::class,'index'])->middleware('auth');
 Route::get('admin-only',[RoleController::class,'OnlyForAdmin'])->middleware(['auth','can:admin']);
 Route::get('editor-only',[RoleController::class,'OnlyForEditor'])->middleware(['auth','can:editor']);
+Route::get('author-only',[RoleController::class,'OnlyForAuthor'])->middleware(['auth','can:author']);

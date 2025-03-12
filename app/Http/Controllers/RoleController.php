@@ -34,4 +34,9 @@ class RoleController extends Controller
         // abort(403);
         return response('Only for editor');
     }
+
+    public function OnlyForAuthor(Request $request)
+    {
+        return response('Only for Author');
+    }
 }

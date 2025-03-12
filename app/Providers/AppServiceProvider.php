@@ -21,24 +21,27 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::define('admin', function ($user) {
-            return $user->roles->contains('name', 'admin');
+            // return $user->roles->contains('name', 'admin');
+            return $user->hasRole('admin');
         });
 
         Gate::define('editor', function ($user) {
-            if ($user->roles->contains('name', 'admin')) {
-                return true;
-            }
-            return $user->roles->contains('name', 'editor');
+            // if ($user->roles->contains('name', 'admin')) {
+            //     return true;
+            // }
+            // return $user->roles->contains('name', 'editor');
+            return $user->hasAnyRole(['admin','editor']);
         });
 
-        Gate::define('editor', function ($user) {
-            if ($user->roles->contains('name', 'admin')) {
-                return true;
-            }
-            if ($user->roles->contains('name', 'editor')) {
-                return true;
-            }
-            return $user->roles->contains('name', 'editor');
+        Gate::define('author', function ($user) {
+            // if ($user->roles->contains('name', 'admin')) {
+            //     return true;
+            // }
+            // if ($user->roles->contains('name', 'editor')) {
+            //     return true;
+            // }
+            // return $user->roles->contains('name', 'author');
+            return $user->hasAnyRole(['admin','editor','author']);
         });
     }
 }

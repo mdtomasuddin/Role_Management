@@ -39,4 +39,12 @@ class RoleController extends Controller
     {
         return response('Only for Author');
     }
+
+    public function secretMessage(Request $request){
+        // $secret=$request->input('password');
+        // if($secret !== 'secret'){
+        //     abort(401);
+        // }
+        return response('this is a secret message');
+    }
 }

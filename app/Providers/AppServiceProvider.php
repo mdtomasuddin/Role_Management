@@ -43,5 +43,10 @@ class AppServiceProvider extends ServiceProvider
             // return $user->roles->contains('name', 'author');
             return $user->hasAnyRole(['admin','editor','author']);
         });
+
+
+        Gate::define('secret', function($user){
+            return request()->input('password')==='secret';
+        });
     }
 }
